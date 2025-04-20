@@ -14,12 +14,7 @@ export const todoRouter = createTRPCRouter({
       }),
   ),
   addTodo: publicProcedure
-    .input(
-      z.object({
-        content: z.string(),
-        dueDate: z.date().optional(),
-      }),
-    )
+    .input(z.object({ content: z.string() }))
     .mutation(async ({ input }) => {
       const [addedTodo] = await db.insert(todo).values(input).returning()
 
@@ -33,7 +28,6 @@ export const todoRouter = createTRPCRouter({
         id: z.number(),
         content: z.string().optional(),
         isComplete: z.boolean().optional(),
-        dueDate: z.date().optional(),
       }),
     )
     .mutation(async ({ input }) => {

@@ -1,43 +1,24 @@
-"use client"
-
-import { Trash2 } from "lucide-react"
-import { useRouter } from "next/navigation"
-import { Button } from "~/components/ui/button"
+import TodoDeleteModal from "./TodoDeleteModal"
+import TodoEditModal from "./TodoEditModal"
 import { type TodoModel } from "~/server/db/schema"
-import { api } from "~/trpc/react"
 
 type TodoProps = {
-  values: TodoModel
+  todo: TodoModel
 }
 
-export default function Todo({ values }: TodoProps) {
-  const deleteTodo = api.todo.deleteTodo.useMutation()
-  const router = useRouter()
-
+export default function Todo({ todo }: TodoProps) {
   return (
-    <li className="flex gap-4 items-center">
+    <li className="grid grid-cols-[auto_1fr_auto] items-center gap-6">
       <input
         type="checkbox"
         name="is_complete"
-        defaultChecked={values.isComplete}
+        defaultChecked={todo.isComplete}
       />
-      <p>
-        {values.content}{" "}
-        <small className="text-xs text-zinc-600">
-          {values.dueDate?.toDateString()}
-        </small>
-      </p>
-      <Button
-        variant="ghost"
-        size="sm"
-        className="hover:cursor-pointer"
-        onClick={() => {
-          deleteTodo.mutate(values.id)
-          router.refresh()
-        }}
-      >
-        <Trash2 />
-      </Button>
+      <p>{todo.content} </p>
+      <div className="space-x-1">
+        <TodoEditModal todo={todo} />
+        <TodoDeleteModal todo={todo} />
+      </div>
     </li>
   )
 }

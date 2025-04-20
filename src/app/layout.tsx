@@ -10,9 +10,9 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Children) {
   return (
     <html lang="en">
-      <body>
+      <body className="grid h-screen place-items-center bg-gray-200">
         <TRPCReactProvider>
-          <main>{children}</main>
+          <main className="rounded-xl bg-white p-4 shadow-xl">{children}</main>
         </TRPCReactProvider>
       </body>
     </html>
