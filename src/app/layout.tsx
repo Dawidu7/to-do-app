@@ -11,7 +11,9 @@ export default function RootLayout({ children }: Children) {
   return (
     <html lang="en">
       <body>
-        <TRPCReactProvider>{children}</TRPCReactProvider>
+        <TRPCReactProvider>
+          <main>{children}</main>
+        </TRPCReactProvider>
       </body>
     </html>
   )

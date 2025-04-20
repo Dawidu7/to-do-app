@@ -1,3 +1,4 @@
+import { type InferSelectModel } from "drizzle-orm"
 import {
   boolean,
   serial,
@@ -12,3 +13,5 @@ export const todo = table("todo", {
   isComplete: boolean("is_complete").notNull().default(false),
   dueDate: timestamp("due_date"),
 })
+
+export type TodoModel = InferSelectModel<typeof todo>
