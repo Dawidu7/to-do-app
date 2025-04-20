@@ -1,11 +1,11 @@
-import { FlatCompat } from "@eslint/eslintrc";
-import tseslint from "typescript-eslint";
+import { FlatCompat } from "@eslint/eslintrc"
 // @ts-ignore -- no types for this plugin
-import drizzle from "eslint-plugin-drizzle";
+import drizzle from "eslint-plugin-drizzle"
+import tseslint from "typescript-eslint"
 
 const compat = new FlatCompat({
   baseDirectory: import.meta.dirname,
-});
+})
 
 export default tseslint.config(
   {
@@ -29,10 +29,7 @@ export default tseslint.config(
         "warn",
         { prefer: "type-imports", fixStyle: "inline-type-imports" },
       ],
-      "@typescript-eslint/no-unused-vars": [
-        "warn",
-        { argsIgnorePattern: "^_" },
-      ],
+      "@typescript-eslint/no-unused-vars": ["off", { argsIgnorePattern: "^_" }],
       "@typescript-eslint/require-await": "off",
       "@typescript-eslint/no-misused-promises": [
         "error",
@@ -58,4 +55,4 @@ export default tseslint.config(
       },
     },
   },
-);
+)
