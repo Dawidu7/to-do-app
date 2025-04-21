@@ -12,7 +12,9 @@ export default function RootLayout({ children }: Children) {
     <html lang="en">
       <body className="grid h-screen place-items-center bg-gray-200">
         <TRPCReactProvider>
-          <main className="rounded-xl bg-white p-4 shadow-xl">{children}</main>
+          <main className="w-96 rounded-xl bg-white p-4 shadow-xl">
+            {children}
+          </main>
         </TRPCReactProvider>
       </body>
     </html>

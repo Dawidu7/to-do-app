@@ -14,11 +14,7 @@ import { Spinner } from "~/components/ui/spinner"
 import { type TodoModel } from "~/server/db/schema"
 import { api } from "~/trpc/react"
 
-type TodoDeleteModalProps = {
-  todo: TodoModel
-}
-
-export default function TodoDeleteModal({ todo }: TodoDeleteModalProps) {
+export default function TodoDeleteModal({ todo }: { todo: TodoModel }) {
   const [isOpen, setIsOpen] = useState(false)
   const utils = api.useUtils()
   const deleteTodo = api.todo.deleteTodo.useMutation({

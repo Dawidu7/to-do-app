@@ -25,17 +25,10 @@ import { Spinner } from "~/components/ui/spinner"
 import { type TodoModel } from "~/server/db/schema"
 import { api } from "~/trpc/react"
 
-type TodoEditModalProps = {
-  todo: TodoModel
-}
-
-const editFormSchema = z.object({
-  content: z.string(),
-})
-
+const editFormSchema = z.object({ content: z.string() })
 type EditFormValues = z.infer<typeof editFormSchema>
 
-export default function TodoEditModal({ todo }: TodoEditModalProps) {
+export default function TodoEditModal({ todo }: { todo: TodoModel }) {
   const [isOpen, setIsOpen] = useState(false)
   const form = useForm<EditFormValues>({
     resolver: zodResolver(editFormSchema),
