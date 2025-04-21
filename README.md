@@ -6,11 +6,12 @@
 - [x] Install ShadCN
 - [x] Create database schema
 - [x] Update TRPC with database schema
-- [ ] Create UI
+- [] Create UI
   - [x] Add very simple UI
   - [x] Add delete button
   - [x] Add add/update buttons
   - [x] Make checkbox usable
-  - [ ] Add search bar with filters
+  - [x] Add search bar
+  - [ ] Create custom sort orders
 - [ ] ~~Add auth with Clerk~~
 - [ ] Add Data Access Layer

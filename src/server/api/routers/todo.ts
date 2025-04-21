@@ -7,12 +7,6 @@ import { todo } from "~/server/db/schema"
 
 export const todoRouter = createTRPCRouter({
   getTodos: publicProcedure.query(async () => await db.query.todo.findMany()),
-  getTodo: publicProcedure.input(z.number()).query(
-    async ({ input }) =>
-      await db.query.todo.findFirst({
-        where: () => eq(todo.id, input),
-      }),
-  ),
   addTodo: publicProcedure
     .input(z.object({ content: z.string() }))
     .mutation(async ({ input }) => {
